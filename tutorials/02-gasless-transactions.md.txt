@@ -1,0 +1,22 @@
+```markdown
+# Tutorial 2: Triggering Gasless Transactions
+
+One of LazorKit's most powerful features is **Gasless Transactions**. This allows users to interact with your dApp even if they have 0 SOL in their wallet.
+
+## How It Works
+1. User initiates an action (e.g., "Send USDC").
+2. The app creates a **UserOperation** instead of a standard transaction.
+3. This operation is signed by the user's Passkey.
+4. A **Paymaster** service intercepts the transaction and pays the SOL gas fee.
+
+## Implementation Guide
+
+### 1. Configuration
+Ensure your `LazorkitProvider` has a valid `paymasterUrl`.
+
+```javascript
+// Configured in App.jsx
+const config = {
+  // ... other config
+  paymasterUrl: '[https://api.devnet.lazorkit.com/paymaster/YOUR_API_KEY](https://api.devnet.lazorkit.com/paymaster/YOUR_API_KEY)' 
+};
